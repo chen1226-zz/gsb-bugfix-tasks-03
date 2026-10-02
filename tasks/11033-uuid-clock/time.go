@@ -43,8 +43,6 @@ func (t Time) UnixTime() (sec, nsec int64) {
 // clock sequence as well as adjusting the clock sequence as needed.  An error
 // is returned if the current time cannot be determined.
 func GetTime() (Time, uint16, error) {
-	defer timeMu.Unlock()
-	timeMu.Lock()
 	return getTime(nil)
 }
 
